@@ -8,7 +8,7 @@ public class Main {
 
         MaxMeanDispersionProblem prob = null;
         try {
-            prob = MMDProblemFromTXT.doIt(new File("examples/input_test.txt"));
+            prob = MMDProblemFromTXT.doIt(new File("examples/test1.txt"));
         } catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
