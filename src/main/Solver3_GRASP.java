@@ -1,7 +1,6 @@
 package main;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
 public class Solver3_GRASP extends MMDSolver {
 
@@ -35,15 +34,27 @@ public class Solver3_GRASP extends MMDSolver {
         ArrayList<Boolean> solution = lrc.get(random.nextInt(lrcSize));
 
         // Local search.
-        // Look for best neighbor of solution and replace if it improves the
-        // solution, until a local maximum is reached.
+        solution = optimizeByLocalSearch(solution, prob);
+
+        return solution;
+    }
+
+    /**
+     * Local search.
+     * Look for best neighbor of solution and replace if it improves the
+     * solution, until a local maximum is reached.
+     * @param solution
+     * @param prob
+     */
+    protected ArrayList<Boolean> optimizeByLocalSearch(ArrayList<Boolean> solution, MaxMeanDispersionProblem prob){
+
         ArrayList<Boolean> bestNeighbor = getBestNeighbor(solution, prob);
 
         while (prob.checkSolutionValue(bestNeighbor) > prob.checkSolutionValue(solution)) {
             solution = bestNeighbor;
             bestNeighbor = getBestNeighbor(solution, prob);
         }
-
+        
         return solution;
     }
 
@@ -52,9 +63,10 @@ public class Solver3_GRASP extends MMDSolver {
     /**
      * @param solution
      * @param problem
-     * @return
+     * @return The best neighbor to the given solution, as measured by the given
+     *         problem.
      */
-    private ArrayList<Boolean> getBestNeighbor(ArrayList<Boolean> solution, MaxMeanDispersionProblem problem) {
+    protected ArrayList<Boolean> getBestNeighbor(ArrayList<Boolean> solution, MaxMeanDispersionProblem problem) {
 
         ArrayList<ArrayList<Boolean>> neighbors = getNeighbors(solution);
 
@@ -76,9 +88,10 @@ public class Solver3_GRASP extends MMDSolver {
 
     /**
      * @param solution
-     * @return The neighboring solutions of @solution.
+     * @return The neighboring solutions of the given solution.
      */
-    private ArrayList<ArrayList<Boolean>> getNeighbors(ArrayList<Boolean> solution) {
+    @SuppressWarnings("unchecked")
+    protected ArrayList<ArrayList<Boolean>> getNeighbors(ArrayList<Boolean> solution) {
 
         ArrayList<ArrayList<Boolean>> neighbors = new ArrayList<ArrayList<Boolean>>();
 
