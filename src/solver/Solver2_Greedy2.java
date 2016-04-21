@@ -6,7 +6,7 @@ import java.util.Random;
 
 import main.MaxMeanDispersionProblem;
 
-public class Solver2_Greedy2 extends MMDSolver {
+public class Solver2_Greedy2 extends Solver0 {
 
     @Override
     public String catchName() {
@@ -22,6 +22,7 @@ public class Solver2_Greedy2 extends MMDSolver {
         int i = new Random().nextInt(prob.size);
         
         solution.set(i, true); // We choose a random initial node.
+        
         
         
         return solution;

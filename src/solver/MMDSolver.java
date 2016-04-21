@@ -1,13 +1,10 @@
 package solver;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 import main.MaxMeanDispersionProblem;
 
-public abstract class MMDSolver {
-    
-    Random random = new Random();
+public interface MMDSolver {
     
     abstract public ArrayList<Boolean> solve(MaxMeanDispersionProblem prob);
     
