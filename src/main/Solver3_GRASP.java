@@ -4,6 +4,11 @@ import java.util.ArrayList;
 
 public class Solver3_GRASP extends MMDSolver {
 
+    @Override
+    public String catchName() {
+        return "GRASP";
+    }
+    
     /**
      * Constructive phase (?)
      * 
@@ -23,12 +28,11 @@ public class Solver3_GRASP extends MMDSolver {
     @Override
     public ArrayList<Boolean> solve(MaxMeanDispersionProblem prob) {
 
-        ArrayList<ArrayList<Boolean>> lrc = new ArrayList<ArrayList<Boolean>>(lrcSize);
-
+        ArrayList<ArrayList<Boolean>> lrc = new ArrayList<ArrayList<Boolean>>();
         // Populate the LRC with randomly generated solutions (constructive
         // phase).
         for (int i = 0; i < lrcSize; i++)
-            lrc.set(i, constructivePhase(prob));
+            lrc.add(constructivePhase(prob));
 
         // Choose a single candidate.
         ArrayList<Boolean> solution = lrc.get(random.nextInt(lrcSize));

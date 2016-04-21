@@ -11,6 +11,11 @@ public class Solver4_VNC extends Solver3_GRASP {
     }
     
     @Override
+    public String catchName() {
+        return "VNC";
+    }
+    
+    @Override
     @SuppressWarnings("unchecked")
     protected ArrayList<ArrayList<Boolean>> getNeighbors(ArrayList<Boolean> solution){
         

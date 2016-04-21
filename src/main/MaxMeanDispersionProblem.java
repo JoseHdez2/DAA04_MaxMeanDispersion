@@ -31,6 +31,16 @@ public class MaxMeanDispersionProblem {
         return str;
     }
     
+    public static ArrayList<Integer> nodesInSolution(ArrayList<Boolean> solution){
+        ArrayList<Integer> nodesInSol = new ArrayList<Integer>();
+        
+        for (int i = 0; i < solution.size(); i++){
+            if (solution.get(i) == true) nodesInSol.add(i);
+        }
+        
+        return nodesInSol;
+    }
+    
     /**
      * Given a solution for this problem, return the mean dispersion value.
      * (Which is the optimality value of said solution).
@@ -42,10 +52,8 @@ public class MaxMeanDispersionProblem {
             System.err.println("Solution and problem are not the same size!");
             return 0f;
         }
-        ArrayList<Integer> nodesInSol = new ArrayList<Integer>();
-        for (int i = 0; i < size; i++){
-            if (solution.get(i) == true) nodesInSol.add(i);
-        }
+        
+        ArrayList<Integer> nodesInSol = nodesInSolution(solution);
         
         float solValue = 0f;
         

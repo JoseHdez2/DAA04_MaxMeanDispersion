@@ -9,4 +9,8 @@ public abstract class MMDSolver {
     
     abstract ArrayList<Boolean> solve(MaxMeanDispersionProblem prob);
     
+    /**
+     * And you were?
+     */
+    abstract String catchName();
 }

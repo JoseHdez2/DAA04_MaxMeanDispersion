@@ -7,6 +7,11 @@ import java.util.Random;
 public class Solver2_Greedy2 extends MMDSolver {
 
     @Override
+    public String catchName() {
+        return "Greedy 2";
+    }
+    
+    @Override
     public ArrayList<Boolean> solve(MaxMeanDispersionProblem prob) {
         
         ArrayList<Boolean> solution = 

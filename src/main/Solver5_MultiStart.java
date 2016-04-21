@@ -7,6 +7,11 @@ import java.util.Random;
 public class Solver5_MultiStart extends MMDSolver {
 
     @Override
+    public String catchName() {
+        return "MultiStart";
+    }
+
+    @Override
     public ArrayList<Boolean> solve(MaxMeanDispersionProblem prob) {
         
         ArrayList<Boolean> solution = 
