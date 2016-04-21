@@ -6,7 +6,7 @@ public class Permutation {
     
     public HashSet<String> perms = new HashSet<>();
     
-    Permutation(String str){
+    public Permutation(String str){
         permutate(str);
     }
     

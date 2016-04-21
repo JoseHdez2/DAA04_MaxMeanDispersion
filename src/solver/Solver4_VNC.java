@@ -1,12 +1,14 @@
-package main;
+package solver;
 
 import java.util.ArrayList;
+
+import main.Permutation;
 
 public class Solver4_VNC extends Solver3_GRASP {
 
     int k;
     
-    Solver4_VNC(int k){
+    public Solver4_VNC(int k){
         this.k = k;
     }
     

@@ -4,6 +4,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 
+import solver.MMDSolver;
+import solver.Solver2_Greedy2;
+import solver.Solver3_GRASP;
+import solver.Solver4_VNC;
+
 public class MMDTester {
     
     private ArrayList<MMDSolver> solvers;

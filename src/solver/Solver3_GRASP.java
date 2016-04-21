@@ -1,6 +1,8 @@
-package main;
+package solver;
 
 import java.util.ArrayList;
+
+import main.MaxMeanDispersionProblem;
 
 public class Solver3_GRASP extends MMDSolver {
 
