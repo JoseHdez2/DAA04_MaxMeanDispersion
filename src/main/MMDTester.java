@@ -45,7 +45,7 @@ public class MMDTester {
             ArrayList<Boolean> solution = solver.solve(problem);
             timer.stop();
             System.out.format("Time: %2.4f s%n", timer.getTimeCountAsSeconds());
-            System.out.format("Solution: %s%n", MaxMeanDispersionProblem.nodesInSolution(solution));
+            System.out.format("Solution: %s%n", MaxMeanDispersionSolution.nodesInSolution(solution));
             System.out.format("Mean dispersion: %4.2f%n%n", problem.checkSolutionValue(solution));
         }
     }
