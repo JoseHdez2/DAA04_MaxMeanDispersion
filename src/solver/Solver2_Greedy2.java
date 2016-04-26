@@ -14,16 +14,14 @@ public class Solver2_Greedy2 extends Solver0 {
     }
     
     @Override
-    public ArrayList<Boolean> solve(MaxMeanDispersionProblem prob) {
+    public ArrayList<Boolean> doSolve(MaxMeanDispersionProblem prob) {
         
+        // We begin with all nodes in the solution.
         ArrayList<Boolean> solution = 
-                new ArrayList<Boolean>(Collections.nCopies(prob.size, false));
+                new ArrayList<Boolean>(Collections.nCopies(prob.size, true));
         
-        int i = new Random().nextInt(prob.size);
-        
-        solution.set(i, true); // We choose a random initial node.
-        
-        
+        // We find neighboring solutions by substraction until we reach a local maximum.
+        solution = optimizeByLocalSearch(solution, prob, NeighborMode.ONLY_SUBTRACTIVE);
         
         return solution;
     }

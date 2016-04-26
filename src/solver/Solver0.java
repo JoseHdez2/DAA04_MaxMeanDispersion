@@ -6,17 +6,42 @@ import java.util.Random;
 
 import main.MaxMeanDispersionProblem;
 import main.MaxMeanDispersionSolution;
+import main.MyTimer;
 
 /**
  * Utility class.
- * 
+ * Implements MMDSolver and has other important utility functions.
  * @author jose
  */
 public abstract class Solver0 implements MMDSolver {
 
-    boolean debug = true;
+    boolean debugOptimize = false;
     Random random = new Random();
+    private int execNum = 0;
+    public MyTimer timer = new MyTimer();
 
+    public int getExecNum(){
+        return execNum;
+    }
+    
+    public void resetExecNum(){
+        execNum = 0;
+    }
+    
+    public MyTimer getTimer(){
+        return timer;
+    }
+    
+    public ArrayList<Boolean> solve(MaxMeanDispersionProblem prob) throws Exception{
+        execNum++;
+        timer.restart();
+        ArrayList<Boolean> solution = doSolve(prob);
+        timer.stop();
+        return solution;
+    }
+    
+    public abstract ArrayList<Boolean> doSolve(MaxMeanDispersionProblem prob) throws Exception;
+    
     /**
      * @param problem
      * @return Solution with initial pair on it.
@@ -58,17 +83,21 @@ public abstract class Solver0 implements MMDSolver {
                                                       MaxMeanDispersionProblem prob,
                                                       NeighborMode mode){
 
-        if (debug) System.out.format("Unoptimized solution: " + prob.toString(solution) + "%n");
+        if (debugOptimize)
+            System.out.format("Unoptimized solution: " + prob.toString(solution) + "%n");
         
         ArrayList<Boolean> bestNeighbor = getBestNeighbor(solution, prob, mode);
-        if (debug) System.out.format("Best neighbor: " + prob.toString(bestNeighbor) + "%n");
+        if (debugOptimize)
+            System.out.format("Best neighbor: " + prob.toString(bestNeighbor) + "%n");
 
         while (prob.checkSolutionValue(bestNeighbor) > prob.checkSolutionValue(solution)) {
-            if (debug) System.out.println("Best neighbor is the new solution. Pivoting...");
+            if (debugOptimize)
+                System.out.println("Best neighbor is the new solution. Pivoting...");
             solution = bestNeighbor;
             bestNeighbor = getBestNeighbor(solution, prob, mode);
         }
-        if (debug) System.out.format("Local maximum: " + prob.toString(solution) + "%n");
+        if (debugOptimize)
+            System.out.format("Local maximum: " + prob.toString(solution) + "%n");
         
         return solution;
     }

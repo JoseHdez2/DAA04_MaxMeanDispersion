@@ -14,7 +14,7 @@ public class Solver1_Greedy extends Solver0 {
     }
     
     @Override
-    public ArrayList<Boolean> solve(MaxMeanDispersionProblem prob) {
+    public ArrayList<Boolean> doSolve(MaxMeanDispersionProblem prob) {
         
         ArrayList<Boolean> solution = 
                 new ArrayList<Boolean>(Collections.nCopies(prob.size, false));

@@ -5,17 +5,17 @@ import java.util.Collections;
 
 import main.Permutation;
 
-public class Solver4_VNC extends Solver3_GRASP {
+public class Solver4_VNS extends Solver3_GRASP {
 
     int k;
     
-    public Solver4_VNC(int k){
+    public Solver4_VNS(int k){
         this.k = k;
     }
     
     @Override
     public String catchName() {
-        return "VNC";
+        return "VNS";
     }
     
     @Override
