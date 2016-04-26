@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.Collections;
 
 import solver.MMDSolver;
+import solver.Solver1_Greedy;
 import solver.Solver2_Greedy2;
 import solver.Solver3_GRASP;
 import solver.Solver4_VNC;
@@ -16,9 +17,10 @@ public class MMDTester {
     
     public MMDTester(int vnc_k){
         solvers = new ArrayList<MMDSolver>();
+        solvers.add(new Solver1_Greedy());
         solvers.add(new Solver2_Greedy2());
-        solvers.add(new Solver3_GRASP());
-        solvers.add(new Solver4_VNC(vnc_k));
+        //solvers.add(new Solver3_GRASP());
+        //solvers.add(new Solver4_VNC(vnc_k));
         // solvers.add(new Solver5_MultiStart());
         timer = new MyTimer();
     }
@@ -35,7 +37,7 @@ public class MMDTester {
         return new String(new char[n]).replace("\0", str);
     }
     
-    public void test(MaxMeanDispersionProblem problem){
+    public void testAllSolvers(MaxMeanDispersionProblem problem){
         String line = repeatString(n, "-");
         String head = repeatString(n/4, "#"); 
         // String line = Strings.repeat("ab",3);
@@ -45,8 +47,7 @@ public class MMDTester {
             ArrayList<Boolean> solution = solver.solve(problem);
             timer.stop();
             System.out.format("Time: %2.4f s%n", timer.getTimeCountAsSeconds());
-            System.out.format("Solution: %s%n", MaxMeanDispersionSolution.nodesInSolution(solution));
-            System.out.format("Mean dispersion: %4.2f%n%n", problem.checkSolutionValue(solution));
+            System.out.println(problem.toString(solution));
         }
     }
 }

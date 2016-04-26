@@ -15,6 +15,6 @@ public class Main {
         System.out.println("funciona");
 
         MMDTester tester = new MMDTester(10);
-        tester.test(prob);
+        tester.testAllSolvers(prob);
     }
 }

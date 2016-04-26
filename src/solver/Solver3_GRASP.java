@@ -40,32 +40,11 @@ public class Solver3_GRASP extends Solver0 {
         ArrayList<Boolean> solution = lrc.get(random.nextInt(lrcSize));
 
         // Local search.
-        solution = optimizeByLocalSearch(solution, prob);
+        solution = optimizeByLocalSearch(solution, prob, NeighborMode.UNRESTRAINED);
 
         return solution;
     }
 
-    /**
-     * Local search.
-     * Look for best neighbor of solution and replace if it improves the
-     * solution, until a local maximum is reached.
-     * @param solution
-     * @param prob
-     */
-    protected ArrayList<Boolean> optimizeByLocalSearch(ArrayList<Boolean> solution, MaxMeanDispersionProblem prob){
 
-        System.out.format("Current solution: %s (%s)", "");
-        
-        ArrayList<Boolean> bestNeighbor = getBestNeighbor(solution, prob);
-        System.out.format("Best neighbor is new solution.", "");
-
-        while (prob.checkSolutionValue(bestNeighbor) > prob.checkSolutionValue(solution)) {
-            System.out.format("Best neighbor is new solution.", "");
-            solution = bestNeighbor;
-            bestNeighbor = getBestNeighbor(solution, prob);
-        }
-        
-        return solution;
-    }
 
 }

@@ -13,7 +13,7 @@ public class MaxMeanDispersionSolution extends ArrayList<Boolean> {
 
     /*
      * We don't sacrifice modularity/reusability since we can still use with
-     * unwrapped objecs if we want to (right?).
+     * unwrapped objects if we want to (right?).
      * A revolution in paper-thin wrappers!
      */
 
@@ -38,5 +38,5 @@ public class MaxMeanDispersionSolution extends ArrayList<Boolean> {
     
     public static String toString(ArrayList<Boolean> solution){
         return nodesInSolution(solution).toString();
-    }
+    }   
 }

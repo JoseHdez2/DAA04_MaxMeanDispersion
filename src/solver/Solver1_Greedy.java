@@ -18,12 +18,12 @@ public class Solver1_Greedy extends Solver0 {
         
         ArrayList<Boolean> solution = 
                 new ArrayList<Boolean>(Collections.nCopies(prob.size, false));
+       
+        // We start with the best initial pair.
+        solution = bestInitialPair(prob);
         
-        int i = new Random().nextInt(prob.size);
-        
-        solution.set(i, true); // We choose a random initial node.
-        
-        getBestNeighbor(solution, prob);
+        // We keep adding all possibilities until we reach a local maximum.
+        solution = optimizeByLocalSearch(solution, prob, NeighborMode.ONLY_ADDITIVE);
         
         return solution;
     }

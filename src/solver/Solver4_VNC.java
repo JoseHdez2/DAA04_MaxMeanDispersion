@@ -1,6 +1,7 @@
 package solver;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 import main.Permutation;
 
@@ -19,7 +20,7 @@ public class Solver4_VNC extends Solver3_GRASP {
     
     @Override
     @SuppressWarnings("unchecked")
-    protected ArrayList<ArrayList<Boolean>> getNeighbors(ArrayList<Boolean> solution){
+    protected ArrayList<ArrayList<Boolean>> getNeighbors(ArrayList<Boolean> solution, NeighborMode mode){
         
         // PENDING validate: k <= solution.size
         
@@ -31,15 +32,26 @@ public class Solver4_VNC extends Solver3_GRASP {
         
         ArrayList<ArrayList<Boolean>> neighbors = new ArrayList<ArrayList<Boolean>>();
 
+        // Random lazy method:
+        ArrayList<Boolean> randomNeighbor = 
+                applyFlipMask(solution, flipMasks.get(random.nextInt(flipMasks.size())));
+        neighbors.add(randomNeighbor);
+        // Exhaustive method.
+        /*
         // One neighbor for each "flip mask".
         for (String flipMask : flipMasks){
-            ArrayList<Boolean> aux = (ArrayList<Boolean>) solution.clone();
-            for (int i = 0; i < aux.size(); i++){
-                if (flipMask.charAt(i) == '1') aux.set(i, !solution.get(i));
-            }
-            neighbors.add(aux);
-        }
+            neighbors.add(applyFlipMask(solution, flipMask));
+        }*/
+        
 
         return neighbors;
+    }
+    
+    ArrayList<Boolean> applyFlipMask(ArrayList<Boolean> originalSolution, String flipMask){
+        ArrayList<Boolean> newSolution = (ArrayList<Boolean>) originalSolution.clone();
+        for (int i = 0; i < newSolution.size(); i++){
+            if (flipMask.charAt(i) == '1') newSolution.set(i, !originalSolution.get(i));
+        }
+        return newSolution;
     }
 }
